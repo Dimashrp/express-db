@@ -9,12 +9,14 @@ var contactModel = require('../models/contactModel')
 // routing contacts
 router.get('/', function(req,res) {
   contactModel.selectAll(connector.connection, function(err,data) {
-      res.render('contact', {title: 'contact', dataKontak: data})
+    console.log(data);
+      res.render('contact', {title: 'contact', data: data})
   })
 })
 
 router.post('/', function(req,res) {
   contactModel.insertData(connector.connection, req.body)
+  console.log(req.body);
   res.redirect('/')
 })
 
@@ -25,7 +27,7 @@ router.get('/delete/:id',function(req, res) {
 
 router.get('/edit/:id', function (req,res) {
   contactModel.getEditData(connector.connection, req.params, function(err,data) {
-    res.render('edit_contact', {dataEdit: data})
+    res.render('editContact', {dataEdit: data})
   })
 })
 

@@ -4,7 +4,6 @@ class Contact {
   constructor(data) {
     this.id = data.id
     this.name = data.name
-    this.company = data.company
     this.phone = data.phone_num
     this.email = data.email
   }
@@ -21,7 +20,7 @@ class Contact {
   }
 
   static insertData(connection, request) {
-    connection.run(`INSERT INTO Contacts (name,company,phone_num,email) VALUES ('${request.formName}', '${request.formCompany}', '${request.formPhone}', '${request.formEmail}');`)
+    connection.run(`INSERT INTO Contacts (name,phone_num,email) VALUES ('${request.nama}', '${request.phone}', '${request.email}');`)
   }
 
   static deleteData(connection, request) {
@@ -40,7 +39,7 @@ class Contact {
   }
 
   static updateData(connection, request1, request2) {
-    connection.run(`UPDATE Contacts SET name='${request1.formName}', phone_num='${request1.formPhone}', email='${request1.formEmail}' WHERE id = ${request2.id}`)
+    connection.run(`UPDATE Contacts SET name='${request1.nama}', phone_num='${request1.phone}', email='${request1.email}' WHERE id = ${request2.id}`)
   }
 }
 
