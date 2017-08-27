@@ -25,15 +25,16 @@ router.get('/delete/:id',function(req, res) {
   res.redirect('/')
 })
 
-router.get('/edit/:id', function (req,res) {
+router.get('/update/:id', function (req,res) {
   contactModel.getEditData(connector.connection, req.params, function(err,data) {
-    res.render('editContact', {dataEdit: data})
+    console.log(data[0]);
+    res.render('editContact', {title :'update contact',data: data[0]})
   })
 })
 
-router.post('/edit/:id', function(req,res) {
-  contactModel.updateData(connector.connection, req.body, req.params)
-  res.redirect('/contacts')
+router.post('/update/:id', function(req,res) {
+  contactModel.updateData(connector.connection, req)
+  res.redirect('/')
 })
 
 

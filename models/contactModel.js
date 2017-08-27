@@ -38,8 +38,8 @@ class Contact {
     })
   }
 
-  static updateData(connection, request1, request2) {
-    connection.run(`UPDATE Contacts SET name='${request1.nama}', phone_num='${request1.phone}', email='${request1.email}' WHERE id = ${request2.id}`)
+  static updateData(connection, request) {
+    connection.run(`UPDATE Contacts SET name='${request.body.nama}', phone_num='${request.body.phone}', email='${request.body.email}' WHERE id = ${request.params.id}`)
   }
 }
 
