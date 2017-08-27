@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var contact = require('./routers/contact')
 var app = express();
 
@@ -21,8 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var sqlite3 = require('sqlite3').verbose()
-var db = new sqlite3.Database('./db/contact.db')
 var dbModel = require('./models/dbModel')
 var contactModel = require('./models/contactModel')
 var contactRouter = require('./routers/contact')
